@@ -48,7 +48,7 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
-    
+    "whitenoise.middleware.WhiteNoiseMiddleware",
     'django.middleware.locale.LocaleMiddleware',
     
     'django.middleware.common.CommonMiddleware',
@@ -167,3 +167,5 @@ TAGGIT_CASE_INSENSITIVE = True
 
 
 CKEDITOR_UPLOAD_PATH = "uploads/"
+
+STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
