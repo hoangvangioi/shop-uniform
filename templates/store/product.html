@@ -1,0 +1,194 @@
+{% extends "base.html" %} {% block content %}
+{% load humanize %}
+<section class="bg-primary py-5">
+    <div class="container">
+        <ol class="float-end breadcrumb ondark mb-0">
+
+            <li class="mt-2">
+                <h6 class="text-white"><a href="{% url 'home' %}" style="text-decoration: none;">&ensp;Home&ensp;<i class="fas fa-angle-right"></i> </a> </h6>
+            </li>
+            <li class="mt-2">
+                <h6 class="text-white"><a href="{% url 'store' %}" style="text-decoration: none;">&ensp;Store&ensp;<i class="fas fa-angle-right"></i> </a> </h6>
+            </li>
+            <li class="mt-2 active" aria-current="page">
+                <h6 class="text-white">&ensp;View product&ensp;</h6>
+            </li>
+        </ol>
+        <h2 class="text-white">Chi tiết sản phẩm</h2>
+    </div>
+    <!-- container //  -->
+</section>
+<!-- =================== COMPONENT 2 =================== -->
+<section class="padding-y bg-white shadow-sm">
+    <div class="container">
+        <div class="row">
+            <aside class="col-lg-6">
+                <article class="gallery-wrap gallery-vertical">
+                    <a href="#" class="img-big-wrap img-thumbnail bg-light mainImage"> <img height="520" src="{{ single_product.product_images.url }}" class="mix-blend-multiply"> </a>
+                    <!-- img-big-wrap.// -->
+                    <div class="thumbs-wrap mb-3 thumb">
+                        <a href="{{ single_product.product_images.url }}" class="item-thumb" target="mainImage"> <img width="60" height="60" src="{{ single_product.product_images.url }}"> </a>
+                        {% for i in product_gallery %}
+                        <a href="{{i.image.url}}" class="item-thumb" target="mainImage"> <img width="60" height="60" src="{{i.image.url}}"> </a>
+                        {% endfor %}
+                    </div>
+                    <!-- thumbs-wrap.// -->
+                </article>
+                <!-- gallery-wrap .end// -->
+            </aside>
+            <div class="col-lg-6">
+                <article class="ps-lg-3">
+                    <h4 class="title text-dark">{{ single_product.product_name }}</h4>
+                    {% if single_product.stock <= 0 %}
+                    <span class="badge bg-danger-light rounded-pill float-end mb-5 text-danger" style="font-size:21px"> Out of stock </span>
+                    {% else %}
+                    <span class="badge bg-success-light rounded-pill float-end mb-5 text-success" style="font-size:21px"> Product available </span>
+                    {% endif %}
+                    <div class="rating-wrap my-3">
+                        &ensp;
+                        <i class="fa fa-shopping-basket"></i> Còn lại {{ single_product.stock }} sản phẩm</span>
+                    </div>
+            <!-- rating-wrap.// -->
+            <hr>
+            <div class="mb-4"> <var class="price h5">{{ single_product.price|intcomma }} <small>VND</small></var></div>
+            <div class="mb-3"> <label class="text-muted mb-2"><strong>Màu sắc:</strong></label>
+                <div>
+                    {% for i in single_product.variation_set.colors %}
+                    <label class="checkbox-btn"> <input type="radio" name="choose_11"> <span class="btn btn-light"> {{ i.variation_value | capfirst }} </span> </label> {% endfor %}
+                </div>
+            </div>
+            <div class="mb-3"> <label class="text-muted mb-2"><strong>Kích thước:</strong></label>
+                <div>
+                    {% for i in single_product.variation_set.sizes %}
+                    <label class="checkbox-btn"> <input type="radio" name="choose_22"> <span class="btn btn-light"> {{ i.variation_value | capfirst }} </span> </label> {% endfor %}
+                </div>
+            </div>
+            <h5>Thông tin sản phẩm</h5>
+            <p class="ml-xl-0 ml-4">{{ single_product.product_details }}</p>
+            </article>
+        </div>
+    </div>
+    </div>
+</section>
+<strong></strong>
+<!-- ============== SECTION  ============== -->
+<section class="padding-y bg-light border-top">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8">
+                <!-- =================== COMPONENT SPECS ====================== -->
+                <div class="card">
+                    <header class="card-header">
+                        <ul class="nav nav-tabs card-header-tabs">
+                            <li class="nav-item">
+                                <a href="#" data-bs-target="#tab_specs" data-bs-toggle="tab" class="nav-link active"><h6>Mô tả sản phẩm</h6></a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="#" data-bs-target="#tab_warranty" data-bs-toggle="tab" class="nav-link"><h6>Thông tin người bán</h6></a>
+                            </li>
+                        </ul>
+                    </header>
+                    <div class="tab-content">
+                        <article id="tab_specs" class="tab-pane show active card-body">
+                            {{ single_product.description|safe }}
+                        </article>
+                        <!-- tab-content.// -->
+                        <article id="tab_warranty" class="tab-pane card-body">
+
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <aside class="col-lg-4">
+                                                <div class="text-lg-center">
+                                                    <img class="img-lg mb-0 img-avatar" src="/media/{{userprofile.avatar}}" alt="Avatar">
+                                                    <h3 class="text-danger btn-light">{{user.last_name}} {{user.first_name}}</h3>
+                                                </div>
+                                            </aside>
+                                            <!-- col.// -->
+                                            <div class="col-lg-8">
+                                                <div class="row justify-content-center">
+                                                {% if userprofile.url_fb %}
+                                                <a href="" class="btn btn-icon btn-sm btn-secondary btn-facebook me-2 mb-2 w-50">
+                                                    <i class="fab fa-facebook-f"></i> Facebook
+                                                </a>
+                                                {% endif %}
+
+                                                {% if userprofile.url_instagram %}
+                                                <a href="{{userprofile.url_instagram}}" class="btn btn-icon btn-sm btn-secondary btn-instagram me-2 mb-2 w-50">
+                                                    <i class="fab fa-instagram"></i> Instagram
+                                                </a>
+                                                {% endif %}
+                                                
+                                                {% if userprofile.tel %}
+                                                <a href="{{userprofile.tel}}" class="btn btn-icon btn-sm btn-secondary btn-twitter me-2 mb-2 w-50">
+                                                    <i class="fas fa-phone"></i> Phone
+                                                </a>
+                                                {% endif %}
+
+                                                {% if userprofile.mail %}
+                                                <a href="{{userprofile.mail}}" class="btn btn-icon btn-sm btn-secondary btn-messenger me-2 mb-2 w-50">
+                                                    <i class="fas fa-envelope"></i> Email
+                                                </a>
+                                                {% endif %}
+
+
+                                                </div>
+                                                <!-- row.// -->
+                                            </div>
+                                            <!-- col.// -->
+                                        </div>
+                                        <hr class="my-4">
+                                        <div class="row" style="max-width:920px">
+                                            <p>{{userprofile.bio}}</p>
+                                        </div>
+                                        <!-- row.// -->
+                                    </div>
+
+                        </article>
+                    </div>
+                </div>
+                <!-- =================== COMPONENT SPECS .// ================== -->
+            </div>
+            <!-- col.// -->
+            <aside class="col-lg-4">
+                <!-- =================== COMPONENT ADDINGS ====================== -->
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Similar items</h5>
+                        {% for product in products %}
+                        <article class="itemside mb-3">
+                            <a href="{{ product.get_absolute_url }}" class="aside">
+                                <img src="{{ product.product_images.url }}" width="96" height="96" class="img-md img-thumbnail">
+                            </a>
+                            <div class="info">
+                                <a href="{{ product.get_absolute_url }}" class="title mb-1">{{ product.product_name }}</a>
+                                <strong class="price"> ${{ product.price }}.90</strong>
+                                <!-- price.// -->
+                            </div>
+                        </article>
+                        {% endfor %}
+                    </div>
+                    <!-- card-body .// -->
+                </div>
+                <!-- card .// -->
+                <!-- =================== COMPONENT ADDINGS .// ================== -->
+            </aside>
+            <!-- col.// -->
+        </div>
+
+        <br><br>
+
+    </div>
+    <!-- container // -->
+</section>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $('.thumb a').click(function(e) {
+            e.preventDefault();
+            $('.mainImage img').attr('src', $(this).attr("href"));
+        })
+    })
+</script>
+{% endblock content %}

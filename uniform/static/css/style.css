@@ -1,0 +1,218 @@
+.tns-outer {
+    position: relative;
+}
+
+.tns-item {
+    -ms-touch-action: pan-y;
+    touch-action: pan-y;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.tiny-slider .item {
+    position: relative;
+}
+
+.tns-controls [data-controls] {
+    position: absolute;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
+    width: 50px;
+    height: 50px;
+    line-height: 50px;
+    border-radius: 0.325rem;
+    display: block;
+    z-index: 9;
+    text-align: center;
+    -webkit-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+    background: rgba(255, 255, 255, 0.3);
+    color: #fff;
+    border: none;
+    margin: 0 10px;
+}
+
+.tns-controls [data-controls]:hover {
+    background-color: #066ac9;
+    color: #fff;
+}
+
+.tns-controls [data-controls] i {
+    line-height: inherit;
+}
+
+.tns-controls [data-controls=prev] {
+    left: 0;
+}
+
+.tns-controls [data-controls=next] {
+    right: 0;
+}
+
+.arrow-dark [data-controls] {
+    background: #24292d;
+    color: #fff;
+}
+
+.arrow-white [data-controls] {
+    background-color: #fff;
+    color: #747579;
+}
+
+.arrow-gray [data-controls] {
+    background: #dde0e3;
+    color: #24292d;
+}
+
+.arrow-round [data-controls] {
+    border-radius: 50%;
+}
+
+.arrow-blur [data-controls] {
+    -webkit-backdrop-filter: blur(5px);
+    backdrop-filter: blur(5px);
+    background: rgb(231, 33, 33) !important;
+}
+
+.arrow-blur [data-controls]:hover {
+    -webkit-backdrop-filter: blur(0px);
+    backdrop-filter: blur(0px);
+    background: rgba(0, 0, 0, 0.4) !important;
+}
+
+.arrow-blur.arrow-white [data-controls] {
+    background-color: rgba(255, 255, 255, 0.2) !important;
+    color: #fff;
+}
+
+.arrow-hover {
+    overflow: hidden;
+}
+
+.arrow-hover [data-controls=prev] {
+    left: -75px;
+}
+
+.arrow-hover [data-controls=next] {
+    right: -75px;
+}
+
+.arrow-hover:hover [data-controls=prev] {
+    left: 0px;
+}
+
+.arrow-hover:hover [data-controls=next] {
+    right: 0px;
+}
+
+.arrow-xs .tns-controls [data-controls] {
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    font-size: 14px;
+    margin: 0;
+}
+
+@media (max-width: 767.98px) {
+    .arrow-md-none [data-controls] {
+        display: none;
+    }
+}
+
+.arrow-creative .fa-chevron-left:before {
+    content: "\f060" !important;
+}
+
+.arrow-creative .fa-chevron-right:before {
+    content: "\f061" !important;
+}
+
+.btn-facebook:hover,
+.btn-facebook:focus,
+.btn-facebook:active {
+    border-color: #1877f2 !important;
+    background-color: #1877f2 !important;
+    color: #fff !important;
+    box-shadow: 0 .375rem 1.125rem -0.375rem rgba(24, 119, 242, .8) !important
+}
+
+.btn-twitter:hover,
+.btn-twitter:focus,
+.btn-twitter:active {
+    border-color: #1da1f2 !important;
+    background-color: #1da1f2 !important;
+    color: #fff !important;
+    box-shadow: 0 .375rem 1.125rem -0.375rem rgba(29, 161, 242, .8) !important
+}
+
+.btn-instagram:hover,
+.btn-instagram:focus,
+.btn-instagram:active {
+    border-color: #405de6 !important;
+    background-color: #405de6 !important;
+    color: #fff !important;
+    box-shadow: 0 .375rem 1.125rem -0.375rem rgba(64, 93, 230, .8) !important
+}
+
+.btn-telegram:hover,
+.btn-telegram:focus,
+.btn-telegram:active {
+    border-color: #08c !important;
+    background-color: #08c !important;
+    color: #fff !important;
+    box-shadow: 0 .375rem 1.125rem -0.375rem rgba(0, 136, 204, .8) !important
+}
+
+.btn-messenger:hover,
+.btn-messenger:focus,
+.btn-messenger:active {
+    border-color: #0084ff !important;
+    background-color: #0084ff !important;
+    color: #fff !important;
+    box-shadow: 0 .375rem 1.125rem -0.375rem rgba(0, 132, 255, .8) !important
+}
+
+.btn-icon {
+    flex-shrink: 0;
+    width: 2.75rem;
+    height: 2.75rem;
+    padding: 0
+}
+
+.btn-icon>i {
+    font-size: 1.25rem
+}
+
+.btn-icon.btn-sm,
+.btn-group-sm>.btn-icon.btn {
+    width: 2.25rem;
+    height: 2.25rem
+}
+
+.btn-icon.btn-sm>i,
+.btn-group-sm>.btn-icon.btn>i {
+    font-size: 1.125rem
+}
+
+.btn-icon.btn-lg,
+.btn-group-lg>.btn-icon.btn {
+    width: 3.25rem;
+    height: 3.25rem
+}
+
+.btn-icon.btn-lg>i,
+.btn-group-lg>.btn-icon.btn>i {
+    font-size: 1.4375rem
+}
+
+.btn-icon.btn-xl {
+    width: 4.5rem;
+    height: 4.5rem
+}
+
+.btn-icon.btn-xl>i {
+    font-size: 1.75rem
+}

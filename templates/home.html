@@ -1,0 +1,157 @@
+{% extends "base.html" %} {% load static %} {% block content %}{% load humanize %}
+<!-- ================ SECTION INTRO ================ -->
+<section class="section-intro pt-3 mt-3">
+    <div class="container">
+
+        <div class="row gx-3">
+            <main class="col-lg-9">
+                <article class="card-banner p-5 bg-primary" style="height: 350px">
+                    <div style="max-width: 500px">
+                        <h2 class="text-white">Great products with <br> best deals </h2>
+                        <p class="text-white">No matter how far along you are in your sophistication as an amateur astronomer, there is always one.</p>
+                        <a href="#" class="btn btn-warning"> View more </a>
+                    </div>
+                </article>
+            </main>
+            <aside class="col-lg-3">
+                <article class="card-banner h-100" style="background-color: var(--bs-warning)">
+                    <div class="card-body text-center">
+                        <h5 class="mt-3 text-white">Amazing Gifts</h5>
+                        <p class="text-white">No matter how far along you are in your sophistication</p>
+                        <a href="#" class="btn btn-outline-light"> View more </a>
+                    </div>
+                </article>
+            </aside>
+        </div>
+        <!-- row //end -->
+
+    </div>
+    <!-- container end.// -->
+</section>
+<!-- ================ SECTION INTRO END.// ================ -->
+
+<!-- ================== COMPONENTS 6 ======================= -->
+
+<section class="pb-5 pt-0 pt-lg-5">
+    <div class="container">
+        <div class="card card-body">
+            <div class="row">
+                <!-- Slider START -->
+                <div class="tiny-slider arrow-round arrow-blur arrow-hover">
+                    <h3 class="text-center mb-4">Danh mục sản phẩm</h3>
+                    <div class="tiny-slider-inner pb-1" data-autoplay="true" data-arrow="true" data-edge="2" data-dots="false" data-items="4" data-items-lg="2" data-items-sm="1">
+                        {% for category in links %}
+                        <!-- Card item START -->
+                        <div>
+                            <div class="card action-trigger-hover border bg-transparent">
+                                <!-- Image -->
+                                <img src="{{ category.category_images.url }}" class="card-img-top" alt="{{ category.category_name }}">
+                                <!-- Card body -->
+                                <div class="card-body pb-0">
+                                    <!-- Title -->
+                                    <h5 class="card-title text-center"><a style="text-decoration: none;" href="{{ category.get_absolute_url }}">{{ category.category_name }}</a></h5>
+                                </div>
+
+                            </div>
+                        </div>
+                        <!-- Card item END -->
+                        {% endfor %}
+
+                    </div>
+                </div>
+                <!-- Slider END -->
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- card // -->
+<!-- ===================== COMPONENTS 6 END .// ==================== -->
+
+<!-- ================ SECTION FEATURE ================ -->
+<section class="padding-top">
+    <div class="container">
+        <div class="row gy-4">
+            <aside class="col-lg-6">
+                <article class="card-banner bg-gray h-100" style="min-height: 200px">
+                    <div class="p-3 p-lg-5" style="max-width:70%">
+                        <h3> Best products & brands in our store at 80% off</h3>
+                        <p>That's true but not always</p>
+                        <a class="btn btn-warning" href="#"> Claim offer </a>
+                    </div>
+                    <img src="https://bootstrap-ecommerce.com/bootstrap5-ecommerce/images/banners/banner-item2.jpg" height="350" class="img-bg">
+                </article>
+            </aside>
+            <!-- col.// -->
+            <aside class="col-lg-6">
+
+                <div class="row mb-4">
+                    <div class="col-6">
+                        <article class="card bg-primary" style="min-height: 200px">
+                            <div class="card-body">
+                                <h5 class="text-white">Gaming toolset</h5>
+                                <p class="text-white-50">Technology for cyber sport </p>
+                                <a class="btn btn-outline-light btn-sm" href="#">Learn more</a>
+                            </div>
+                        </article>
+                    </div>
+                    <div class="col-6">
+                        <article class="card bg-primary" style="min-height: 200px">
+                            <div class="card-body">
+                                <h5 class="text-white">Quality sound</h5>
+                                <p class="text-white-50">All you need for music</p>
+                                <a class="btn btn-outline-light btn-sm" href="#">Learn more</a>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+                <!-- row.// -->
+
+                <article class="card bg-success" style="min-height: 200px">
+                    <div class="card-body">
+                        <h5 class="text-white">Buy 2 items, With special gift</h5>
+                        <p class="text-white-50" style="max-width:400px;">Buy one, get one free marketing strategy helps your business improves the brand by sharing the profits </p>
+                        <a class="btn btn-outline-light btn-sm" href="#">Learn more</a>
+                    </div>
+                </article>
+
+            </aside>
+            <!-- col.// -->
+        </div>
+        <!-- row.// -->
+    </div>
+    <!-- container end.// -->
+</section>
+<!-- ================ SECTION FEATURE END.// ================ -->
+
+
+<section class="padding-y bg-light">
+    <div class="container">
+        <!-- ============================ COMPONENTS 1 ============================= -->
+        <h3 class="text-center mb-5 red">Sản phẩm nổi bật</h3>
+        <div class="row">
+            {% for product in products %}
+            <!-- col.// -->
+            <div class="col-lg-3 col-sm-6 col-12">
+                <div class="card card-product-grid">
+                    <div class="img-wrap">
+                        <div class="hover-action p-5">
+                            <a class="btn btn-sm btn-warning" href="{{ product.get_absolute_url }}"> <i class="fa fa-eye mx-1 my-1" style="font-size: x-large;"></i></a>
+                        </div>
+                        <img src="{{ product.product_images.url }}">
+                    </div>
+                    <div class="info-wrap border-top">
+                        <a href="{{ product.get_absolute_url }}" class="title"><strong>{{ product.product_name }}</strong></a>
+                        <div class="price-wrap"> <strong class="price">{{ product.price|intcomma }} <small>VND</small></strong></div>
+                        <!-- price-wrap.// -->
+                    </div>
+                </div>
+                <!-- card // -->
+            </div>
+            <!-- col.// -->
+            {% endfor %}
+        </div>
+        <br>
+    </div>
+    <!-- container .// -->
+</section> {% endblock content %}

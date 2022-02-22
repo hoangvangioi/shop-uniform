@@ -1,0 +1,276 @@
+{% extends "base.html" %} {% block content %} {% load humanize %}
+
+<section class="bg-primary py-5">
+    <div class="container">
+        <ol class="float-end breadcrumb ondark mb-0">
+
+            <li class="mt-2">
+                <h6 class="text-white"><a href="{% url 'home' %}" style="text-decoration: none;">&ensp;Home&ensp;<i class="fas fa-angle-right"></i> </a> </h6>
+            </li>
+            <li class="mt-2 active" aria-current="page">
+                <h6 class="text-white">&ensp;Store&ensp;</h6>
+            </li>
+        </ol>
+        <h2 class="text-white">Cửa hàng</h2>
+    </div>
+    <!-- container //  -->
+</section>
+
+
+<section class="padding-y">
+    <div class="container">
+
+        <div class="row">
+            <aside class="col-lg-3">
+
+                <button class="btn btn-outline-secondary mb-3 w-100  d-lg-none" data-bs-toggle="collapse" data-bs-target="#aside_filter">Show filter</button>
+
+                <!-- ===== Card for sidebar filter ===== -->
+                <div id="aside_filter" class="collapse card d-lg-block mb-5">
+
+                    <article class="filter-group">
+                        <header class="card-header">
+                            <a href="#" class="title" data-bs-toggle="collapse" data-bs-target="#collapse_aside1">
+                                <i class="icon-control fa fa-chevron-down"></i>
+                                <h6 class="font-weight-bold dark-grey-text"><strong>Category</strong></h6>
+                            </a>
+                        </header>
+                        <div class="collapse show" id="collapse_aside1">
+                            <div class="card-body">
+                                <ul class="list-menu">
+                                    <li><a href="{% url 'store' %}">All Product </a></li>
+                                    {% for category in links %}
+                                    <li><a href="{{ category.get_absolute_url }}">{{ category.category_name }}  </a></li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                            <!-- card-body.// -->
+                        </div>
+                        <!-- collapse.// -->
+                    </article>
+
+                    <!-- filter-group // -->
+
+                    <article class="filter-group">
+                        <header class="card-header">
+                            <a href="#" class="title" data-bs-toggle="collapse" data-bs-target="#collapse_aside_brands">
+                                <i class="icon-control fa fa-chevron-down"></i> Brands
+                            </a>
+                        </header>
+                        <div class="collapse show" id="collapse_aside_brands">
+                            <div class="card-body">
+                                <label class="form-check mb-2">
+            <input class="form-check-input" type="checkbox" value="" checked>
+            <span class="form-check-label"> Mercedes </span>
+            <b class="badge rounded-pill bg-gray-dark float-end">120</b>
+          </label>
+                                <!-- form-check end.// -->
+
+                                <label class="form-check mb-2">
+            <input class="form-check-input" type="checkbox" value="" checked>
+            <span class="form-check-label"> Toyota </span>
+            <b class="badge rounded-pill bg-gray-dark float-end">15</b>
+          </label>
+                                <!-- form-check end.// -->
+
+                                <label class="form-check mb-2">
+            <input class="form-check-input" type="checkbox" value="" checked>
+            <span class="form-check-label"> Mitsubishi </span>
+            <b class="badge rounded-pill bg-gray-dark float-end">35</b>
+          </label>
+                                <!-- form-check end.// -->
+
+                                <label class="form-check mb-2">
+            <input class="form-check-input" type="checkbox" value="" checked>
+            <span class="form-check-label"> Nissan </span>
+            <b class="badge rounded-pill bg-gray-dark float-end">89</b>
+          </label>
+                                <!-- form-check end.// -->
+
+                                <label class="form-check mb-2">
+            <input class="form-check-input" type="checkbox" value="">
+            <span class="form-check-label"> Honda </span>
+            <b class="badge rounded-pill bg-gray-dark float-end">30</b>
+          </label>
+                                <!-- form-check end.// -->
+
+                                <label class="form-check mb-2">
+            <input class="form-check-input" type="checkbox" value="">
+            <span class="form-check-label"> Honda accord </span>
+            <b class="badge rounded-pill bg-gray-dark float-end">30</b>
+          </label>
+                                <!-- form-check end.// -->
+                            </div>
+                            <!-- card-body .// -->
+                        </div>
+                        <!-- collapse.// -->
+                    </article>
+
+                    <article class="filter-group">
+                        <header class="card-header">
+                            <a href="#" class="title" data-bs-toggle="collapse" data-bs-target="#collapse_aside2">
+                                <i class="icon-control fa fa-chevron-down"></i> Price
+                            </a>
+                        </header>
+                        <div class="collapse show" id="collapse_aside2">
+                            <div class="card-body">
+                                <input type="range" class="form-range" min="0" max="100">
+                                <div class="row mb-3">
+                                    <div class="col-6">
+                                        <label for="min" class="form-label">Min</label>
+                                        <input class="form-control" id="min" placeholder="$0" type="number">
+                                    </div>
+                                    <!-- col end.// -->
+
+                                    <div class="col-6">
+                                        <label for="max" class="form-label">Max</label>
+                                        <input class="form-control" id="max" placeholder="$1,0000" type="number">
+                                    </div>
+                                    <!-- col end.// -->
+                                </div>
+                                <!-- row end.// -->
+                                <button class="btn btn-light w-100" type="button">Apply</button>
+                            </div>
+                            <!-- card-body.// -->
+                        </div>
+                        <!-- collapse.// -->
+                    </article>
+                    <!-- filter-group // -->
+
+                    <article class="filter-group">
+                        <header class="card-header">
+                            <a href="#" class="title" data-bs-toggle="collapse" data-bs-target="#collapse_aside3">
+                                <i class="icon-control fa fa-chevron-down"></i> Size
+                            </a>
+                        </header>
+                        <div class="collapse show" id="collapse_aside3">
+                            <div class="card-body">
+                                <label class="checkbox-btn">
+                                    <input type="checkbox">
+                                    <span class="btn btn-light"> XS </span>
+                                </label>
+
+                                <label class="checkbox-btn">
+                                    <input type="checkbox">
+                                    <span class="btn btn-light"> SM </span>
+                                </label>
+
+                                <label class="checkbox-btn">
+                                    <input type="checkbox">
+                                    <span class="btn btn-light"> LG </span>
+                                </label>
+
+                                <label class="checkbox-btn">
+                                    <input type="checkbox">
+                                    <span class="btn btn-light"> XXL </span>
+                                </label>
+                            </div>
+                            <!-- card-body.// -->
+                        </div>
+                        <!-- collapse.// -->
+                    </article>
+                    <!-- filter-group // -->
+
+                    <article class="filter-group">
+                        <header class="card-header">
+                            <a href="#" class="title" data-bs-toggle="collapse" data-bs-target="#collapse_aside3">
+                                <i class="icon-control fa fa-chevron-down"></i> Color
+                            </a>
+                        </header>
+                        <div class="collapse show" id="collapse_aside3">
+                            <div class="card-body">
+                                <label class="checkbox-btn">
+                                    <input type="checkbox">
+                                    <span class="btn btn-light"> XS </span>
+                                </label>
+
+                                <label class="checkbox-btn">
+                                    <input type="checkbox">
+                                    <span class="btn btn-light"> SM </span>
+                                </label>
+
+                                <label class="checkbox-btn">
+                                    <input type="checkbox">
+                                    <span class="btn btn-light"> LG </span>
+                                </label>
+
+                                <label class="checkbox-btn">
+                                    <input type="checkbox">
+                                    <span class="btn btn-light"> XXL </span>
+                                </label>
+                            </div>
+                            <!-- card-body.// -->
+                        </div>
+                        <!-- collapse.// -->
+                    </article>
+                </div>
+
+            </aside>
+            <!-- col .// -->
+            <main class="col-lg-9">
+
+                <header class="d-sm-flex align-items-center border-bottom mb-4 pb-3">
+                    <strong class="d-block py-2">{{product_count}} Items found </strong>
+                </header>
+
+                <!-- ========= content items ========= -->
+                <div class="row">
+                    {% for product in products %}
+                    <div class="col-lg-4 col-md-6 col-sm-6">
+                        <figure class="card card-product-grid">
+                            <div class="img-wrap">
+                                <a href="{{ product.get_absolute_url }}"><img src="{{ product.product_images.url }}"></a>
+                            </div>
+                            <figcaption class="info-wrap border-top">
+
+                                <!-- price-wrap.// -->
+                                <h5 class="title mb-2"><a href="{{ product.get_absolute_url }}">{{ product.product_name }}</a></h5>
+                                <div class="price-wrap">
+                                    <strong class="price">{{ product.price|intcomma }} <small>VND</small></strong> {% comment %} <del class="price-old">$170.00</del> {% endcomment %}
+                                </div>
+                            </figcaption>
+                        </figure>
+                    </div>
+                    {% endfor %}
+                </div>
+                <!-- row end.// -->
+                <hr>
+                <!-- Pagination-->
+                <nav class="d-flex justify-content-between pt-2" aria-label="Page navigation">
+                    {% if products.has_other_pages %}
+                    <ul class="pagination">
+                        {% if products.has_previous %}
+                        <li class="page-item"><a class="page-link text-drack" href="?page={{products.previous_page_number}}"><i class="fas fa-arrow-left me-2"></i>Prev</a></li>
+                        {% else %}
+                        <li class="page-item disabled"><a class="page-link" href="#"><i class="fas fa-arrow-left me-2"></i>Prev</a></li>
+                        {% endif %}
+                    </ul>
+                    <ul class="pagination">
+                        {% for i in products.paginator.page_range %} {% if products.number == i %}
+                        <li class="page-item active d-none d-sm-block"><a class="page-link" href="#">{{i}}</a></li>
+                        {% else %}
+                        <li class="page-item d-none d-sm-block"><a class="page-link" href="?page={{i}}">{{i}}</a></li>
+                        {% endif %} {% endfor %}
+                    </ul>
+                    <ul class="pagination">
+                        {% if products.has_next %}
+                        <li class="page-item"><a class="page-link" href="?page={{products.next_page_number}}" aria-label="Next">Next<i class="fas fa-arrow-right ms-2"></i></a></li>
+                        {% else %}
+                        <li class="page-item disabled"><a class="page-link" href="#" aria-label="Next">Next<i class="fas fa-arrow-right ms-2"></i></a></li>
+                        {% endif %}
+                    </ul>
+                    {% endif %}
+                </nav>
+
+                <!-- ========= content items .// ========= -->
+
+            </main>
+            <!-- col .// -->
+        </div>
+        <!-- row .// -->
+
+    </div>
+    <!-- container .//  -->
+</section>
+
+{% endblock content %}

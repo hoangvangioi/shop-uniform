@@ -1,0 +1,31 @@
+<header class="section-header border-bottom">
+    <section class="header-top-dark bg-primary">
+        <div class="container">
+            <nav class="d-flex justify-content-between align-items-center flex-column flex-md-row">
+                <div class="rating-wrap">
+                    <ul class="rating-stars"></ul>
+                </div>
+            </nav>
+        </div>
+    </section>
+    <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="container">
+            <a class="navbar-brand" href="{% url 'home' %}"> <img src="https://bootstrap-ecommerce.com/bootstrap5-ecommerce/images/logo.svg" height="40" class="logo"> </a> <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar_main3" aria-expanded="false" aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span> </button>
+            <div class="collapse navbar-collapse" id="navbar_main3">
+
+                <form class="d-flex flex-grow-1 me-lg-auto my-2 my-lg-0" action="{% url 'search' %}" method='GET'>
+                    <div class="w-75 me-1">
+                        <input class="form-control" type="search" placeholder="Search" aria-label="Search" name="keyword">
+                    </div>
+                    <div> <button class="btn btn-primary" type="submit">Search</button> </div>
+                </form>
+                <div class="float-end">
+                    <a href="{% url 'home' %}" class="btn btn-light"> <i class="fa fa-home text-primary"></i> HOME </a>
+                    <a href="{% url 'store' %}" class="btn btn-light"> <i class="fas fa-store text-primary"></i> STORE </a>
+                    <a href="{{userprofile.url_fb}}" target="_blank" class="btn btn-light bg-facebook"> <i class="fab me-lg-1 fa-facebook-f text-primary"></i> <span class="text-primary d-none d-lg-inline-block">FACEBOOK</span> </a>
+                </div>
+
+            </div>
+        </div>
+    </nav>
+</header>
