@@ -67,8 +67,8 @@ class ProductGallery(models.Model):
 		
 
 class Profile(models.Model):
-	user = models.ForeignKey(User, on_delete=models.CASCADE)
-	avatar = models.ImageField(upload_to='avatar', default='{% static "images/avatar.png" %}')
+	user = models.ForeignKey(User, on_delete=models.CASCADE, blank=True)
+	avatar = models.ImageField(upload_to='avatar', blank=True)
 	bio = models.TextField(blank=True)
 	url_fb = models.URLField(blank=True)
 	url_instagram = models.URLField(blank=True)
