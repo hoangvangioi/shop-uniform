@@ -24,7 +24,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-9q_crvmo5no@6)cjvjy$&0xd2v7t(cq#9%pu-3gvt3lzcqknrr'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['.herokuapp.com', '127.0.0.1']
 
@@ -63,7 +63,7 @@ ROOT_URLCONF = 'uniform.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ['templates'],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -115,27 +115,15 @@ AUTH_PASSWORD_VALIDATORS = [
 
 # LANGUAGE_CODE = 'en-us'
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'vi'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Ho_Chi_Minh'
 
 USE_I18N = True
 
 USE_TZ = True
 
 from django.utils.translation import gettext_lazy as _
-
-LANGUAGES = [
-    ('en', _('English')),
-    ('ja', _('Japanese')),
-]
-# LANGUAGE_CHOICES = (
-#     ('en-us', 'English'),
-#     ('nl', 'Dutch'),
-# )
-# language = models.CharField(default='en-us', choices=LANGUAGE_CHOICES, max_length=5)
-LANGUAGE_SESSION_KEY = 'session_language_store'
-LANGUAGE_COOKIE_NAME = 'cookie_language_store'  # it could be anything
 
 
 LOCALE_PATHS = [
