@@ -66,14 +66,14 @@ class ProductGallery(models.Model):
 		verbose_name_plural = 'product gallery'
 		
 
-class Profile(models.Model):
-	user = models.OneToOneField(User, on_delete=models.CASCADE, blank=True)
-	avatar = models.ImageField(upload_to='avatar', blank=True)
-	bio = models.TextField(blank=True)
-	url_fb = models.URLField(blank=True)
-	url_instagram = models.URLField(blank=True)
-	tel = models.CharField(max_length=15, blank=True)
-	mail = models.EmailField(blank=True)
+# class Profile(models.Model):
+# 	user = models.OneToOneField(User, on_delete=models.CASCADE, blank=True)
+# 	avatar = models.ImageField(upload_to='avatar', blank=True)
+# 	bio = models.TextField(blank=True)
+# 	url_fb = models.URLField(blank=True)
+# 	url_instagram = models.URLField(blank=True)
+# 	tel = models.CharField(max_length=15, blank=True)
+# 	mail = models.EmailField(blank=True)
 
-	def __str__(self):
-		return f'{self.user.first_name} {self.user.last_name}'
+# 	def __str__(self):
+# 		return f'{self.user.first_name} {self.user.last_name}'

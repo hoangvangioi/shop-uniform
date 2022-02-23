@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Product, Variation, ProductGallery, Profile
+from .models import Product, Variation, ProductGallery#, Profile
 # import admin_thumbnails
 
 # Register your models here.
@@ -22,4 +22,4 @@ class VariationAdmin(admin.ModelAdmin):
 admin.site.register(Product, ProductAdmin)
 admin.site.register(Variation, VariationAdmin)
 admin.site.register(ProductGallery)
-admin.site.register(Profile)
+# admin.site.register(Profile)

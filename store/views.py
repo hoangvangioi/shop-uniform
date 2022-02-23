@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404
-from .models import Product, ProductGallery, Profile
+from .models import Product, ProductGallery#, Profile
 from category.models import Category
 from django.db.models import Q
 
@@ -47,7 +47,7 @@ def product_detail(request, category_slug, product_slug):
     page = request.GET.get('page')
     paged_products = paginator.get_page(page)
     
-    userprofile = get_object_or_404(Profile, user=request.user)
+    # userprofile = get_object_or_404(Profile, user=request.user)
     
     context = {
         'products': products,
@@ -55,7 +55,7 @@ def product_detail(request, category_slug, product_slug):
         'single_product': single_product,
         'product_gallery': product_gallery,
         
-        'userprofile': userprofile,
+        # 'userprofile': userprofile,
     }
     return render(request, 'store/product.html', context)
 
