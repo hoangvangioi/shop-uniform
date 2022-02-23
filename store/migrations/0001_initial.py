@@ -46,19 +46,6 @@ class Migration(migrations.Migration):
             ],
         ),
         migrations.CreateModel(
-            name='Profile',
-            fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('avatar', models.ImageField(blank=True, upload_to='avatar')),
-                ('bio', models.TextField(blank=True)),
-                ('url_fb', models.URLField(blank=True)),
-                ('url_instagram', models.URLField(blank=True)),
-                ('tel', models.CharField(blank=True, max_length=15)),
-                ('mail', models.EmailField(blank=True, max_length=254)),
-                ('user', models.ForeignKey(blank=True, on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)),
-            ],
-        ),
-        migrations.CreateModel(
             name='ProductGallery',
             fields=[
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
