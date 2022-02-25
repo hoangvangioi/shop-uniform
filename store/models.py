@@ -27,6 +27,9 @@ class Product(models.Model):
 	def __str__(self):
 		return self.product_name
 
+	class Meta:
+		verbose_name = 'Sản phẩm'
+		verbose_name_plural = 'Sản phẩm'
 
 class VariationManager(models.Manager):
 	def colors(self):
