@@ -11,8 +11,8 @@ class Category(models.Model):
     category_images = models.ImageField(upload_to = 'category')
 
     class Meta:
-        verbose_name = 'category'
-        verbose_name_plural = 'categories'
+        verbose_name = 'Danh mục sản phẩm'
+        verbose_name_plural = 'Danh mục sản phẩm'
 
     def get_absolute_url(self):
             return reverse('products_by_category', args=[self.slug])
