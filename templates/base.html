@@ -25,7 +25,11 @@
 </head>
 
 <body>
-    {% include "includes/navbar.html" %} {% block content %} {% endblock content %} {% include "includes/footer.html" %}
+    {% include "includes/navbar.html" %}
+    <main class="page-wrapper">
+        {% block content %} {% endblock content %} 
+    </main>
+    {% include "includes/footer.html" %}
 
     <!-- JS -->
     <script src="{% static 'js/bootstrap.bundle.min.js' %}" type="text/javascript"></script>

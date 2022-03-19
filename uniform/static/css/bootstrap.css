@@ -49,7 +49,23 @@
     }
 }
 
+html * {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale
+}
+
+html,
 body {
+    height: 100%
+}
+
+.page-wrapper {
+    flex: 1 0 auto
+}
+
+body {
+    display: flex;
+    flex-direction: column;
     margin: 0;
     font-family: var(--bs-font-sans-serif);
     font-size: 1rem;

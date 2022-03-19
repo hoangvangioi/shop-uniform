@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-lg-8 mt-5">
+            <div class="content-section">
+                <form method="POST" action="" enctype="multipart/form-data">
+                    {% csrf_token %}
+                        <legend class="border-bottom mb-4">{{ title }}</legend>
+                        {{ form }}
+                        <button class="btn btn-outline-dark" type="submit">{{ submit }}</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
