@@ -1,40 +1,13 @@
-from django.shortcuts import render
 from django.urls import reverse_lazy
 from category.forms import CategoryForm
 from .models import Category
-from django.views.generic.edit import CreateView
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.contrib.auth.mixins import PermissionRequiredMixin
-
 from django.urls import reverse_lazy
-from django.shortcuts import render, redirect, get_object_or_404
-from django.views.generic import ListView, DetailView, UpdateView, CreateView, DeleteView
-from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
-from django.contrib.auth.mixins import PermissionRequiredMixin
-from django.utils.decorators import method_decorator
-# from .decorators import superuser_required
-# from .forms import CommentForm, PostForm, CategoryForm
+from django.views.generic import ListView, UpdateView, CreateView, DeleteView
 
 
 # Create your views here.
-
-
-class CategoryView(ListView):
-	model = Category
-	template_name = 'category/category.html'
-	context_object_name = 'categories'
-	ordering = ['-timestamp']
-	paginate_by = 6
-
-	def get_queryset(self):
-		self.category = get_object_or_404(Category, slug=self.kwargs['slug'])
-		return Category.objects.filter(categories = self.category)
-
-	def get_context_data(self, **kwargs):
-		context = super(CategoryView, self).get_context_data(**kwargs)
-		context['category'] = self.category
-		return context
-
 
 
 class CategoryListView(ListView):
@@ -55,7 +28,7 @@ class CategoryCreateView(CreateView):
     template_name = "category/category_form.html"
     form_class = CategoryForm
     permission_required = 'category.fields'
-    success_url = reverse_lazy('store')
+    success_url = reverse_lazy('category_list')
 
 
     def form_valid(self, form):
@@ -74,7 +47,7 @@ class CategoryCreateView(CreateView):
 class CategoryUpdateView(LoginRequiredMixin, UpdateView):
 	model = Category
 	form_class = CategoryForm
-	success_url = reverse_lazy('store')
+	success_url = reverse_lazy('category_list')
 
 	def form_valid(self, form):
 		form.instance.author = self.request.user
@@ -96,7 +69,7 @@ class CategoryUpdateView(LoginRequiredMixin, UpdateView):
 
 class CategoryDeleteView(DeleteView):
 	model = Category
-	success_url = reverse_lazy('store')
+	success_url = reverse_lazy('category_list')
 
 	def get_context_data(self, **kwargs):
 		context = super().get_context_data(**kwargs)
