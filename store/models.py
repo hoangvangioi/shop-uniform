@@ -70,16 +70,3 @@ class ProductGallery(models.Model):
 	class Meta:
 		verbose_name = 'Hình ảnh sản phẩm'
 		verbose_name_plural = 'Hình ảnh sản phẩm'
-		
-
-# class Profile(models.Model):
-# 	user = models.OneToOneField(User, on_delete=models.CASCADE, blank=True)
-# 	avatar = models.ImageField(upload_to='avatar', blank=True)
-# 	bio = models.TextField(blank=True)
-# 	url_fb = models.URLField(blank=True)
-# 	url_instagram = models.URLField(blank=True)
-# 	tel = models.CharField(max_length=15, blank=True)
-# 	mail = models.EmailField(blank=True)
-
-# 	def __str__(self):
-# 		return f'{self.user.first_name} {self.user.last_name}'

@@ -4,7 +4,6 @@ from .utils import unique_slug_generator
 from django.db.models.signals import pre_save
 
 
-
 # Create your models here.
 
 
