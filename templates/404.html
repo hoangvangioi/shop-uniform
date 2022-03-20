@@ -1,3 +1,4 @@
+{% extends "base.html" %}
 <!DOCTYPE html>
 <html>
 
@@ -7,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style type="text/css">
         body {
-            background: #5ff1fc;
+            background: #ffffff;
         }
         
         h1 {
@@ -15,6 +16,12 @@
             font-size: 190px;
             font-weight: 600;
             margin: 0;
+        }
+        h2 {
+            text-align: center;
+        }
+        .error-details {
+            text-align: center;
         }
         
         #error p {
@@ -29,7 +36,7 @@
             display: block;
             text-decoration: none;
             font-size: 24px;
-            background: #924512;
+            background: #8c50ecc0;
             border-radius: 10px;
             width: 10%;
             padding: 4px;
@@ -51,13 +58,20 @@
 </head>
 
 <body>
+
+    {% block content %}
     <section id="error">
         <div class="content">
-            <h1>404</h1>
-            <p>Error occurred! - File not Found</p>
+            <h1>Oops!</h1>
+            <h2>404 Not Found</h2>
+            <div class="error-details">Sorry, an error has occured, Requested page not found!</div>
+            <br>
             <a class="back" href="{% url 'home' %}">Home</a>
         </div>
     </section>
+    {% endblock content %}
+
+
 </body>
 
 </html>
