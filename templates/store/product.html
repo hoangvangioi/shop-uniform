@@ -48,26 +48,24 @@
                         &ensp;
                         <i class="fa fa-shopping-basket"></i> Còn lại {{ single_product.stock }} sản phẩm</span>
                     </div>
-            <!-- rating-wrap.// -->
-            <hr>
-            <div class="mb-4"> <var class="price h5">{{ single_product.price|intcomma }} <small>VND</small></var></div>
-            <div class="mb-3"> <label class="text-muted mb-2"><strong>Màu sắc:</strong></label>
-                <div>
-                    {% for i in single_product.variation_set.colors %}
-                    <label class="checkbox-btn"> <input type="radio" name="choose_11"> <span class="btn btn-light"> {{ i.variation_value | capfirst }} </span> </label> {% endfor %}
-                </div>
+                    <!-- rating-wrap.// -->
+                    <hr>
+                    <div class="mb-4"> <var class="price h5">{{ single_product.price|intcomma }} <small>VND</small></var></div>
+                    <div class="mb-3"> <label class="text-muted mb-2"><strong>Màu sắc:</strong></label>
+                        <div>
+                            {% for i in single_product.variation_set.colors %}
+                            <label class="checkbox-btn"> <input type="radio" name="choose_11"> <span class="btn btn-light"> {{ i.variation_value | capfirst }} </span> </label> {% endfor %}
+                        </div>
+                    </div>
+                    <div class="mb-3"> <label class="text-muted mb-2"><strong>Kích thước:</strong></label>
+                        <div>
+                            {% for i in single_product.variation_set.sizes %}
+                            <label class="checkbox-btn"> <input type="radio" name="choose_22"> <span class="btn btn-light"> {{ i.variation_value | capfirst }} </span> </label> {% endfor %}
+                        </div>
+                    </div>
+                </article>
             </div>
-            <div class="mb-3"> <label class="text-muted mb-2"><strong>Kích thước:</strong></label>
-                <div>
-                    {% for i in single_product.variation_set.sizes %}
-                    <label class="checkbox-btn"> <input type="radio" name="choose_22"> <span class="btn btn-light"> {{ i.variation_value | capfirst }} </span> </label> {% endfor %}
-                </div>
-            </div>
-            <h5>Thông tin sản phẩm</h5>
-            <p class="ml-xl-0 ml-4">{{ single_product.product_details }}</p>
-            </article>
         </div>
-    </div>
     </div>
 </section>
 <strong></strong>

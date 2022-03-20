@@ -1,8 +1,10 @@
 from django.db import models
 from category.models import Category
 from django.urls import reverse
-from django.contrib.auth.models import User
 from ckeditor_uploader.fields import RichTextUploadingField
+from .utils import unique_slug_generator
+from django.db.models.signals import pre_save
+
 
 # Create your models here.
 
@@ -10,10 +12,8 @@ from ckeditor_uploader.fields import RichTextUploadingField
 class Product(models.Model):
 	product_name    = models.CharField(max_length=200, unique=True)
 	slug            = models.SlugField(max_length=200, unique=True)
-	author          = models.ForeignKey(User, on_delete=models.CASCADE)
-	product_details = models.TextField(blank=True)
-	description     = RichTextUploadingField(blank=True)
 	price           = models.IntegerField()
+	description     = RichTextUploadingField(blank=True)
 	product_images  = models.ImageField(upload_to='products')
 	stock           = models.IntegerField()
 	is_available    = models.BooleanField(default=True)
@@ -30,6 +30,7 @@ class Product(models.Model):
 	class Meta:
 		verbose_name = 'Sản phẩm'
 		verbose_name_plural = 'Sản phẩm'
+
 
 class VariationManager(models.Manager):
 	def colors(self):
@@ -70,3 +71,11 @@ class ProductGallery(models.Model):
 	class Meta:
 		verbose_name = 'Hình ảnh sản phẩm'
 		verbose_name_plural = 'Hình ảnh sản phẩm'
+
+
+
+def pre_save_category_receiver(sender, instance, *args, **kwargs):
+    if not instance.slug:
+        instance.slug = unique_slug_generator(instance)
+
+pre_save.connect(pre_save_category_receiver, sender=Product)

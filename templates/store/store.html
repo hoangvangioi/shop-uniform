@@ -222,7 +222,6 @@
                                 <a href="{{ product.get_absolute_url }}"><img src="{{ product.product_images.url }}"></a>
                             </div>
                             <figcaption class="info-wrap border-top">
-
                                 <!-- price-wrap.// -->
                                 <h5 class="title mb-2"><a href="{{ product.get_absolute_url }}">{{ product.product_name }}</a></h5>
                                 <div class="price-wrap">
@@ -272,5 +271,19 @@
     </div>
     <!-- container .//  -->
 </section>
+
+
+
+<div class="post-single">
+	<div class="post-details">
+		<div class="post-meta d-flex justify-content-between">
+			{% if user.is_superuser %}
+				{% comment %} <a href="{% url 'product_update' object.slug %}" class="btn btn-primary mr-2" role="button">Update</a> {% endcomment %}
+				{% comment %} <a href="{% url 'product_delete' object.slug %}" class="btn btn-danger" role="button">Delete</a> {% endcomment %}
+			{% endif %}
+		</div>
+	</div>
+</div>
+
 
 {% endblock content %}
