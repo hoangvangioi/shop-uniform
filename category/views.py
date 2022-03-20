@@ -5,6 +5,9 @@ from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.contrib.auth.mixins import PermissionRequiredMixin
 from django.urls import reverse_lazy
 from django.views.generic import ListView, UpdateView, CreateView, DeleteView
+from django.utils.decorators import method_decorator
+from django.contrib.auth.decorators import login_required
+from .decorators import superuser_required
 
 
 # Create your views here.
@@ -23,7 +26,8 @@ class CategoryListView(ListView):
 		return context
 
 
-class CategoryCreateView(CreateView):
+@method_decorator(superuser_required, name='dispatch')
+class CategoryCreateView(LoginRequiredMixin, PermissionRequiredMixin, CreateView):
     model = Category
     template_name = "category/category_form.html"
     form_class = CategoryForm

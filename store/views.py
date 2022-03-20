@@ -9,11 +9,14 @@ from django.views.generic import ListView, UpdateView, CreateView, DeleteView, D
 from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.contrib.auth.mixins import PermissionRequiredMixin
+from django.utils.decorators import method_decorator
+from django.contrib.auth.decorators import login_required
+from .decorators import superuser_required
 
 
 # Create your views here.
 
-
+@method_decorator(superuser_required, name='dispatch')
 class ProductListView(ListView):
 	model = Product
 	template_name = 'store/product_list_form.html'
@@ -88,8 +91,8 @@ def search(request):
 	return render(request, 'store/store.html', context)
 
 
-
-class ProductCreateView(CreateView):
+@method_decorator(superuser_required, name='dispatch')
+class ProductCreateView(LoginRequiredMixin, PermissionRequiredMixin, CreateView):
 	model = Product
 	template_name = "store/product_form.html"
 	form_class = ProductForm
@@ -109,7 +112,8 @@ class ProductCreateView(CreateView):
 		return context
 
 
-class ProductUpdateView(LoginRequiredMixin, UpdateView):
+@method_decorator(superuser_required, name='dispatch')
+class ProductUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
 	model = Product
 	form_class = ProductForm
 	success_url = reverse_lazy('product_list')
@@ -132,7 +136,8 @@ class ProductUpdateView(LoginRequiredMixin, UpdateView):
 		return False
 
 
-class ProductDeleteView(DeleteView):
+@method_decorator(superuser_required, name='dispatch')
+class ProductDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
 	model = Product
 	success_url = reverse_lazy('product_list')
 
